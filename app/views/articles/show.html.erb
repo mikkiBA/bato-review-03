@@ -8,5 +8,33 @@
   <%= @article.text %>
 </p>
 
+<h2>Reviews</h2>
+<% @article.reviews.each do |comment| %>
+  <p>
+    <strong>Reviewer:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Review:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a review:</h2>
+<%= form_with(model: [ @article, @article.reviews.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Back', articles_path %>
 | <%= link_to 'Edit', edit_article_path(@article) %>

@@ -7,7 +7,6 @@
     <table border="3">
     <th>作品名</th>
     <th>紹介文</th>
-    <th>Like</th>
     <th>投稿時間</th>
     <th colspan="3">アクションボタン</th>
   </tr>
@@ -16,12 +15,11 @@
     <tr>
        <td><%= article.title %></td>
        <td><%= article.text %></td>
-       <td><%= article.star %></td>
        <td><%= article.created_at %></td>
-       <td><%= link_to '閲覧', article_path(article) %></td>
+       <td><%= link_to '閲覧/レビュー追加', article_path(article) %></td>
        <td><%= link_to '編集', edit_article_path(article) %></td>
        <td><%= link_to '削除', article_path(article),
-                    method: :delete, data: { confirm: '記事を削除してもよろしいですか？' } %></td>
+                    method: :delete, data: { confirm: '作品概要、またそれに紐づくレビューを全て削除してもよろしいですか？' } %></td>
 
     </tr>
   <% end %>
@@ -42,7 +40,27 @@
     <th>投稿時間</th>
   </tr>
 <tr>
-  <td><%= @latest.title %></td>
-  <td><%= @latest.text %></td>
-  <td><%= @latest.created_at %></td>
+  <td><%= @titlelatest.title %></td>
+  <td><%= @titlelatest.text %></td>
+  <td><%= @titlelatest.created_at %></td>
+</tr>
+</table>
+<br>
+
+<div class="ribbon">
+  <h3>最新レビュー</h3>
+</div>
+
+<table>
+  <tr>
+    <th>ユーザー</th>
+    <th>レビュー</th>
+    <th>スター</th>
+    <th>投稿時間</th>
+  </tr>
+<tr>
+  <td><%= @reviewlatest.commenter %></td>
+  <td><%= @reviewlatest.body %></td>
+  <td><%= @reviewlatest.restars %></td>
+  <td><%= @reviewlatest.created_at %></td>
 </tr>

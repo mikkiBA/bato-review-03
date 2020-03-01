@@ -1,13 +1,15 @@
 class ArticlesController < ApplicationController
     def index
         @articles = Article.all
-        @latest = Article.order(created_at: :desc).take
+        @titlelatest = Article.order(created_at: :desc).take
+        @reviewlatest = Review.order(created_at: :desc).take
         #limitはアクティブレコードのメソッドなので、帰ってくるのが配列じゃない
         #@latest02 = Article.order(created_at: :desc).limit(1)
     end
     #Railsではコントローラのインスタンス変数はすべてビューに渡されるようになっている
     def show
         @article = Article.find(params[:id])
+        @starave = Review.where(article_id: @article).average(:restars)
     end
 
     def new

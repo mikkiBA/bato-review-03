@@ -14,18 +14,18 @@
  <% end %>
 
   <p>
-    <%= form.label :title %><br>
+    <%= form.label :作品名 %><br>
     <%= form.text_field :title %>
   </p>
 
   <p>
-    <%= form.label :text %><br>
+    <%= form.label :紹介文 %><br>
     <%= form.text_area :text %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit "投稿"%>
   </p>
 <% end %>
 
-<%= link_to 'Back', articles_path %>
+<%= link_to '一覧へ戻る', articles_path %>
